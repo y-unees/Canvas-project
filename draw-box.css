@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #06566e;
+    --secondary-color: #fff;
+    --tertiary-color: #AAB99A;
+    --forth-color: #083e4e;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -36,7 +43,7 @@ h1{
     flex-direction: column;
     padding: 10px;
     margin: 0 !important;
-    width: 100px;
+    width: 120px ;
     background-color: #06566e;
     align-items: center;
 }
@@ -64,22 +71,31 @@ h1{
     width: 100%;
 }
 
+ul {
+    padding-inline-start: 10px !important;
+}
+
 li{
     list-style-type: none;
+    padding-left: 10px;
 }
 
 .modal {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 50vh;
+    left: 50vw;
     transform: translate(-50%, -50%);
     background: white;
-    color: black;
-    padding: 20px;
+    color: var(--forth-color);
+    font-size: 18px;
+    padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.9);
+}
+
+.modal h2{
     text-align: center;
 }
 
@@ -89,7 +105,7 @@ li{
 
 .close {
     position: absolute;
-    top: 5px;
+    top: 0px;
     right: 10px;
     font-size: 40px;
     cursor: pointer;
@@ -97,6 +113,7 @@ li{
 
 #eraser.active {
     background-color: rgb(134, 113, 113);
+    transform: scale(1.05);
 }
 
 .drawing-board {
