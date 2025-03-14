@@ -2,18 +2,25 @@ const canvas = document.getElementById('drawing-board');
 const toolbar = document.getElementById('toolbar');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth - toolbar.offsetWidth;
-canvas.height = window.innerHeight;
-
 let isPainting = false;
 let isEraser = false;
 let lineWidth = 5;
 let previousColor = "#000000";
+
 ctx.strokeStyle = "#000";
 ctx.lineWidth = lineWidth;
 ctx.lineCap = "round";
 
-// Function to get touch/mouse position
+// Function to resize canvas properly
+const resizeCanvas = () => {
+    canvas.width = window.innerWidth - toolbar.offsetWidth;
+    canvas.height = window.innerHeight - toolbar.offsetTop;
+};
+
+window.addEventListener("load", resizeCanvas);
+window.addEventListener("resize", resizeCanvas);
+
+// Get position of touch or mouse event
 const getPos = (e) => {
     let x, y;
     if (e.touches) {
@@ -29,14 +36,14 @@ const getPos = (e) => {
 
 // Start drawing
 const startPainting = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     isPainting = true;
     ctx.beginPath();
     const { x, y } = getPos(e);
     ctx.moveTo(x, y);
 };
 
-// Draw
+// Draw on canvas
 const draw = (e) => {
     if (!isPainting) return;
     e.preventDefault();
@@ -56,11 +63,12 @@ canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", stopPainting);
 
-// Touch Events (Mobile)
+// Touch Events
 canvas.addEventListener("touchstart", startPainting, { passive: false });
 canvas.addEventListener("touchmove", draw, { passive: false });
 canvas.addEventListener("touchend", stopPainting);
 
+// Toolbar actions (Clear & Download)
 toolbar.addEventListener("click", (e) => {
     if (e.target.id === "clear") {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,6 +81,7 @@ toolbar.addEventListener("click", (e) => {
     }
 });
 
+// Change Stroke Color & Line Width
 toolbar.addEventListener("change", (e) => {
     if (e.target.id === "stroke") {
         ctx.strokeStyle = e.target.value;
@@ -83,19 +92,31 @@ toolbar.addEventListener("change", (e) => {
     }
 });
 
+// Prevent canvas clearing when clicking stroke input
+const strokeInput = document.getElementById("stroke");
+strokeInput.addEventListener("click", (e) => e.stopPropagation());
+strokeInput.addEventListener("change", (e) => ctx.strokeStyle = e.target.value);
+
+// Eraser Functionality
 const eraserButton = document.getElementById("eraser");
-eraserButton.addEventListener("click", () => {
+
+const toggleEraser = () => {
     isEraser = !isEraser;
     if (isEraser) {
         previousColor = ctx.strokeStyle;
         ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 20; 
         eraserButton.classList.add("active");
     } else {
         ctx.strokeStyle = previousColor;
+        ctx.lineWidth = lineWidth;
         eraserButton.classList.remove("active");
     }
-});
+};
 
+eraserButton.addEventListener("click", toggleEraser);
+
+// Help Modal
 const helpButton = document.getElementById("help");
 const helpModal = document.getElementById("help-modal");
 const closeBtn = document.querySelector(".close");
@@ -119,11 +140,3 @@ window.addEventListener("touchstart", (e) => {
         helpModal.style.display = "none";
     }
 });
-
-const resizeCanvas = () => {
-    canvas.width = window.innerWidth - toolbar.offsetWidth;
-    canvas.height = window.innerHeight - toolbar.offsetTop;
-};
-
-window.addEventListener("load", resizeCanvas);
-window.addEventListener("resize", resizeCanvas);

@@ -9,17 +9,22 @@
     <link rel="icon" type="image/x-icon" href="/images/apple-touch-icon.png">
 </head>
 <body>
+    <!-- Mobile Issue Warning -->
+    <div id="mobile-warning">⚠️ Some features may not work perfectly on mobile. We're working on it!</div>
+
     <section class="container">
         <div id="toolbar">
             <div class="logo-container">
-                <a href="https://unishdhungana.com.np"><img src="/images/logo-for-games.png" alt="Unish Dhungana Logo" class="logo"></a>
+                <a href="https://unishdhungana.com.np">
+                    <img src="/images/logo-for-games.png" alt="Unish Dhungana Logo" class="logo">
+                </a>
                 <h1>Draw-Box</h1>
-            </div>            
+            </div>                 
             <label for="stroke">Stroke</label>
             <input id="stroke" name="stroke" type="color">
             <label for="linewidth">Line Width</label>
             <input type="number" value="5" id="linewidth" name="linewidth" min="1" max="50">
-            <button id="clear">Clear </button>
+            <button id="clear">Clear</button>
             <button id="eraser">Eraser</button>
             <button id="download">Download</button>
             <button id="help">How to use?</button>
