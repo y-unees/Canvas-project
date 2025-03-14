@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="draw-box.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Draw Box</title>
+    <link rel="icon" type="image/x-icon" href="/images/apple-touch-icon.png">
+</head>
+<body>
+    <section class="container">
+        <div id="toolbar">
+            <div class="logo-container">
+                <a href="https://unishdhungana.com.np"><img src="/images/logo-for-games.png" alt="Unish Dhungana Logo" class="logo"></a>
+                <h1>Draw-Box</h1>
+            </div>            
+            <label for="stroke">Stroke</label>
+            <input id="stroke" name="stroke" type="color">
+            <label for="linewidth">Line Width</label>
+            <input type="number" value="5" id="linewidth" name="linewidth" min="1" max="50">
+            <button id="clear">Clear </button>
+            <button id="eraser">Eraser</button>
+            <button id="download">Download</button>
+            <button id="help">How to use?</button>
+
+            <!-- Pop-up modal -->
+            <div id="help-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>How to Use?</h2>
+                    <ul>
+                        <li>Stroke: Select a color for your brush.</li>
+                        <li>Line Width: Adjust line width for finer strokes.</li>
+                        <li>Clear: Use "Clear" to clear the whole page.</li>
+                        <li>Eraser: Use "Eraser" to remove mistakes.</li>
+                        <li>Download: Click "Download" to save your drawing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="drawing-board">
+            <canvas id="drawing-board"></canvas>
+        </div>
+    </section>
+    <script src="draw-box.js"></script>
+</body>
+</html>

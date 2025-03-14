@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo {
+    width: 70px;
+    height: auto;
+}
+
+h1{
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    font-size: 22px;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+}
+
+#toolbar{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0 !important;
+    width: 100px;
+    background-color: #06566e;
+    align-items: center;
+}
+
+#toolbar * {
+    margin-bottom: 10px;
+}
+
+#toolbar label{
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+#toolbar input{
+    width: 100%;
+}
+
+#toolbar button{
+    background-color: #1565c0;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+li{
+    list-style-type: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#eraser.active {
+    background-color: rgb(134, 113, 113);
+}
+
+.drawing-board {
+    flex: 1;
+    background-color: white;
+}
