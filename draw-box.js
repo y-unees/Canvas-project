@@ -105,11 +105,9 @@ const toggleEraser = () => {
     if (isEraser) {
         previousColor = ctx.strokeStyle;
         ctx.strokeStyle = "#ffffff";
-        ctx.lineWidth = 20; 
         eraserButton.classList.add("active");
     } else {
         ctx.strokeStyle = previousColor;
-        ctx.lineWidth = lineWidth;
         eraserButton.classList.remove("active");
     }
 };
